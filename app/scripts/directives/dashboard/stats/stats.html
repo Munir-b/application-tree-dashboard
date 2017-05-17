@@ -2,12 +2,16 @@
     <div class="panel panel-{{colour}}">
         <div class="panel-heading">
             <div class="row">
-                <div class="col-xs-3">
-                    <i class="fa fa-{{type}} fa-5x"></i>
-                </div>
-                <div class="col-xs-9 text-right">
+                <div class="col-xs-9 text-left">
                     <div style="font-size: 20px;">{{comments}}</div>
-                    <div class="huge">{{number}}</div>
+                    <div style="font-size: 16px; margin-top: 22px">
+                        <div>Component: {{model['component coverage']}}</div>
+                        <div>Integrations: {{model['integration coverage']}}</div>
+                        <div>E2E: {{model['E2E coverage']}}</div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <i class="fa fa-{{type}} fa-3x"></i>
                 </div>
             </div>
         </div>

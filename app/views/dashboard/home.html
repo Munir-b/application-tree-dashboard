@@ -1,49 +1,58 @@
 <div>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">Continuous Delivery Dashboard</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
+    <div class="row">
+        <div class="col-lg-12 vdivide">
+            <label>Category:
+                <select ng-model="category" ng-change="updateCategory()">
+                    <option value="All">ALL</option>
+                    <option value="BO">BO</option>
+                    <option value="Demand">DEMAND</option>
+                    <option value="Supply">SUPPLY</option>
+                </select>
+            </label>
+            <label>Priority:
+                <select ng-model="filters.priority">
+                    <option value="All">all</option>
+                    <option value="Low">low</option>
+                    <option value="Medium">medium</option>
+                    <option value="High">high</option>
+                </select>
+            </label>
+            <label>Is CD:
+                <select ng-model="filters.IsCd">
+                    <option value="All">all</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
+            </label>
+            <label>Product E2E ready:
+                <select ng-model="filters['is product line E2E ready']">
+                    <option value="All">all</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
+            </label>
+            <!--<button type="button" class="btn btn-xs" style="background: white;" ng-click="clearFilters()">Clear filters</button>-->
+        </div>
+    </div><br>
+
     <!-- /.row -->
     <div class="row">
-        
-        <stats number="6" comments="New comments!" colour="primary" type="comments"></stats>
-        <stats number="12" comments="New tasks!" colour="primary" type="user"></stats>
-        <stats number="18" comments="New orders!" colour="yellow" type="shopping-cart"></stats>
-        <stats number="24" comments="Support tickets!" colour="red" type="support"></stats>
-
+        <stats ng-repeat="service in filteredData |
+        filter: priorityFilter |
+        filter: IsCdFilter |
+        filter: isProductLineE2eReadyFilter |
+        filter: refactoringEstFilter |
+        orderBy:'name'"
+           model="service"
+           comments={{service.name}}
+           colour="{{service.IsCd == 'yes' ? 'success': 'danger'}}"
+           type="cogs"
+           goto="dashboard.details({'service':{{service}}})"></stats>
     </div>
-    
-    <!-- /.panel -->
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
-                </div>
-                <!-- /.panel-heading -->
-                <timeline></timeline>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                </div>
-                <!-- /.panel-heading -->
-                <notifications></notifications> 
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-
-            <chat></chat>
-             <!-- /.panel .chat-panel -->
-        </div>
-        <!-- /.col-lg-4 -->
-    </div>
-    <!-- /.row -->
 </div>

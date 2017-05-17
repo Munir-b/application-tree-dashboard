@@ -97,6 +97,22 @@ angular
         templateUrl:'views/form.html',
         url:'/form'
     })
+        .state('dashboard.details',{
+            url:'/details',
+            params: {service: ''},
+            controller: 'DashboardDetailsCtrl',
+            templateUrl:'views/dashboard/details.html',
+            resolve: {
+                loadMyFiles:function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'sbAdminApp',
+                        files:[
+                            'scripts/controllers/dashboardDetailsController.js'
+                        ]
+                    })
+                }
+            }
+        })
       .state('dashboard.blank',{
         templateUrl:'views/pages/blank.html',
         url:'/blank'
