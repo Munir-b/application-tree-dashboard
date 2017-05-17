@@ -5,7 +5,9 @@
     "type": "git",
     "url": "https://github.com/start-angular/sb-admin-angular"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
@@ -39,9 +41,9 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "grunt test",
-    "start": "grunt serve",
     "dist": "grunt serve:dist",
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "start": "grunt serve",
+    "test": "grunt test"
   }
 }
