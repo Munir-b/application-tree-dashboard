@@ -6,6 +6,8 @@
     "url": "https://github.com/start-angular/sb-admin-angular"
   },
   "dependencies": {
+    "google-auth-library": "^0.10.0",
+    "googleapis": "^19.0.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
